@@ -20,7 +20,7 @@ features <- read.table("./data/features.txt")
       dim(features)
 MeanStdIndices <- grep("mean\\(\\)|std\\(\\)", features[, 2])
       length(MeanStdIndices)
-joinData <- JoinData[, MeanStdIndices]
+JoinData <- JoinData[, MeanStdIndices]
       dim(JoinData)
 names(JoinData) <- gsub("\\(\\)", "", features[MeanStdIndices, 2]) # remove "()"
 names(JoinData) <- gsub("mean", "Mean", names(JoinData)) # capitalize "M" in mean
