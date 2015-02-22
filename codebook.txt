@@ -1,0 +1,21 @@
+Getting and cleaning data course project codebook.
+
+The site where the data was obtained:
+    http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+The data for the project:
+    https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+    
+The run_analysis.R script performs the following steps to clean the data:
+1. Read X_train.txt, y_train.txt and subject_train.txt from the "./data/train" folder and store them in TrainData, TrainLabel and TrainSubject.
+2. Read X_test.txt, y_test.txt and subject_test.txt from the "./data/test" folder and store them in TestData, TestLabel and Testsubject.
+3. Concatenate TestData to TrainData to generating a data frame (dims. 10299x561), called "JoinData". Concatenate TestLabel to TrainLabel generating a data frame (dims. 10299x1), "JoinLabel". Concatenate TestSubject to TrainSubject generatin a data frame (dims. 10299x1), "JoinSubject".
+4. Read the features.txt file from the "/data" folder and store the data in a variable called features. Then extract the measurements mean and standard deviation. This results list of indicies 66 values long. We get a subset of JoinData with the 66 corresponding columns.
+5. Edit the column names of the subset removing the "()" and "-" symbols in the names, then capitalise the first letter of "mean" and "std".
+6. Read the activity_labels.txt file from the "./data" folder and store the data in a variable called activity.
+7. Clean the activity names in the second column of activity. First change all names to lower case and remove the underscores in the names and capitalise the letter after the underscore.
+8. Change the values of JoinLabel according to the activity data frame.
+9. Combine JoinSubject, JoinLabel and JoinData by column to get a new data frame(dims. 10299x68), "CleanedData". Rename the first two columns, "subject" and "activity".
+10. Write CleanedData to a text file "merged_data.txt"
+11. Finally, create a second independent tidy data set with the means of each measurement for activity and subject and write the result out to "tidy_dataset.txt".
+
+Sebastian Rosengren.
